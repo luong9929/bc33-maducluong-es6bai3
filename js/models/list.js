@@ -28,9 +28,9 @@ export class list {
   }
   renderList = (hi) => {
     let htmlConten = this.arrList.reduce((html, i) => {
-      console.log(i);
+    
       let listMoi = new listItem();
-      console.log(listMoi);
+     
 
       listMoi = { ...listMoi, ...i };
       return (

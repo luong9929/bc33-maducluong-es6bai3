@@ -9,15 +9,14 @@ document.querySelector("#addItem").onclick = function () {
   let listMoi = new listItem();
   listMoi.newTask = input;
 
-  console.log(listMoi.newTask);
-  console.log(listMoi);
+ 
   List.themMoi(listMoi);
   List.Luu();
   List.lay();
   List.renderList("#todo");
 };
 window.xoalist = (i) => {
-  console.log(i);
+ 
   List.xoa(i);
 
   List.Luu();
