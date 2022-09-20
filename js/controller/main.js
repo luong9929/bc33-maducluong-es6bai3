@@ -1,52 +1,55 @@
-import { hihihi, list } from "../models/list.js";
+
+import { list , donelist } from "../models/list.js";
 import { listItem } from "../models/models.js";
 
-let List = new list()
-let haha = new hihihi()
-document.querySelector('#addItem').onclick = function(){
-    let input = document.querySelector('#newTask ').value
-    let listMoi = new listItem()
-    listMoi.newTask = input
-   
-   
-    console.log(listMoi.newTask)
-    console.log(listMoi)
-    List.themMoi(listMoi)
-    List.Luu()
-    List.lay()
-    List.renderList('#todo')
+let List = new list();
 
-}
-window.xoalist=(i)=>{
-    console.log(i)
-    List.xoa(i)
-   
-    List.Luu()
-    List.renderList('#todo')
-}
-document.querySelector('#two').onclick = function(){
-    List.tangDan()
-    List.renderList('#todo')
-}
-document.querySelector('#three').onclick = function(){
-    List.giamDan()
-    List.renderList('#todo')
-}
-window.onload=function(){
-    List.lay()
-    
-    List.renderList('#todo')
-    haha.get()
-    haha.render('#completed')
-}
+document.querySelector("#addItem").onclick = function () {
+  let input = document.querySelector("#newTask ").value;
+  let listMoi = new listItem();
+  listMoi.newTask = input;
 
+  console.log(listMoi.newTask);
+  console.log(listMoi);
+  List.themMoi(listMoi);
+  List.Luu();
+  List.lay();
+  List.renderList("#todo");
+};
+window.xoalist = (i) => {
+  console.log(i);
+  List.xoa(i);
 
+  List.Luu();
+  List.renderList("#todo");
+};
+document.querySelector("#two").onclick = function () {
+  List.tangDan();
+  List.renderList("#todo");
+  donelist.tang();
+  donelist.render("#completed");
+};
+document.querySelector("#three").onclick = function () {
+  List.giamDan();
+  List.renderList("#todo");
+  donelist.giam();
+  donelist.render("#completed");
+};
+window.onload = function () {
+  List.lay();
 
-window.done = (i) =>{
-    
-    haha.neww(i)
-    console.log(i)
-    haha.save() 
-    haha.del(i)    
-    haha.render('#completed',i)
-}
+  List.renderList("#todo");
+
+  donelist.get();
+
+  donelist.render("#completed");
+};
+window.done = (i) => {
+  List.check(i);
+};
+
+window.xoaDone = (i) => {
+    donelist.del(i);
+    donelist.save();
+    donelist.render("#completed");
+};
